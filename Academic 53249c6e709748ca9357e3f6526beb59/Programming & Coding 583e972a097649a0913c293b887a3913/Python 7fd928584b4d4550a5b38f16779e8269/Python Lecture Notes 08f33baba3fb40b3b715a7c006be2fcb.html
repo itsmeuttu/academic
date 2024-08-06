@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python Lecture Notes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="08f33bab-a3fb-40b3-b715-a7c006be2fcb" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="https://www.notion.so/icons/code_blue.svg"/></div><h1 class="page-title">Python Lecture Notes</h1><p class="page-description"></p></header><div class="page-body"><p id="7e41506c-0d8f-4d9d-b98b-b546aff52ea9" class="">
+</p><p id="31287851-d76d-4fa4-bcaa-7ad11e7bf75f" class="">
+</p><h1 id="d0e37cf7-0939-46b9-9bf1-32d66ebb54ee" class=""><span style="border-bottom:0.05em solid">100 Day of Python</span></h1><p id="98e20950-83b7-4884-96a8-5df36b86c83e" class="">
+</p><figure id="e720bf83-fe9d-4b7b-83c3-71b4ffa73dc5" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Basics%20e720bf83fe9d4b7b83c371b4ffa73dc5.html">Basics</a></figure><figure id="b8ac466d-8dd9-4fa2-bfd3-2822b4dc76fa" class="block-color-gray_background link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%201%20b8ac466d8dd94fa2bfd32822b4dc76fa.html">Day 1</a></figure><figure id="a6aa4c13-51e4-4c88-b2cc-d01b222e0050" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%202%20a6aa4c1351e44c88b2ccd01b222e0050.html">Day 2</a></figure><figure id="8ea2dddb-69dc-4488-9d73-d6eb0d7c1923" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%203-%20Modules%20and%20pip%20in%20Python!%208ea2dddb69dc44889d73d6eb0d7c1923.html">Day 3- Modules and pip in Python!</a></figure><figure id="d0544add-66bc-49bb-b04b-6ee013c98e16" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%204%20-%20Our%20First%20Program%20d0544add66bc49bbb04b6ee013c98e16.html">Day 4 - Our First Program</a></figure><figure id="a61a39f4-bc98-4ffb-8bcd-c61dd7c79ba1" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%205%20-%20Comments,%20Escape%20sequence%20&amp;%20Print%20in%20Pytho%20a61a39f4bc984ffb8bcdc61dd7c79ba1.html">Day 5 - Comments, Escape sequence &amp; Print in Python</a></figure><figure id="798781cc-2cf6-4648-8482-9db81f49039a" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%206%20-%20Variables%20and%20Data%20Types%20798781cc2cf6464884829db81f49039a.html">Day 6 - Variables and Data Types</a></figure><figure id="6ee3724a-a3b1-410f-9cb0-d59dc6dcef8e" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%207-Operators%206ee3724aa3b1410f9cb0d59dc6dcef8e.html">Day 7-Operators</a></figure><figure id="5008c67f-3ea0-4610-a01c-627dfbbafe46" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%208-%20Calculator%205008c67f3ea04610a01c627dfbbafe46.html">Day 8- Calculator</a></figure><figure id="2a26ee85-217c-4b8b-a714-6483f3a0d575" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%209-%20Typecasting%20in%20Python%202a26ee85217c4b8ba7146483f3a0d575.html">Day 9- Typecasting in Python</a></figure><figure id="a0719f65-c30b-4658-9a40-c844b5b8b48f" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2010%20-%20Taking%20User%20Input%20in%20python%20a0719f65c30b46589a40c844b5b8b48f.html">Day 10 - Taking User Input in python</a></figure><figure id="66f91b56-e301-4903-a9ec-898fa5e8d269" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day11%20-%20Strings%2066f91b56e3014903a9ec898fa5e8d269.html">Day11 - Strings</a></figure><figure id="c354b420-60ac-4aae-b6d5-28f8c3ba6609" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2012%20-String%20Slicing%20&amp;%20Operations%20on%20String%20c354b42060ac4aaeb6d528f8c3ba6609.html">Day 12 -String Slicing &amp; Operations on String</a></figure><figure id="35c9ec0b-20dc-48c5-9ee3-e018c58e7988" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2013%20-String%20methods%2035c9ec0b20dc48c59ee3e018c58e7988.html">Day 13 -String methods</a></figure><figure id="2ee6713d-d37c-418f-bf06-928aba77e2d2" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2014%20-%20If%20,%20Elif%20and%20Else%202ee6713dd37c418fbf06928aba77e2d2.html">Day 14 - If , Elif and Else</a></figure><figure id="26a2ecaf-1b5a-48ff-9ca5-17375d4f5f05" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2015%20-%20Time%20Library%2026a2ecaf1b5a48ff9ca517375d4f5f05.html">Day 15 - Time Library</a></figure><figure id="099739eb-4aed-433b-8649-ba820e161e3f" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2016%20-Match%20Case%20Statements%20099739eb4aed433b8649ba820e161e3f.html">Day 16 -Match Case Statements</a></figure><figure id="1ed39fb6-da45-4718-b569-6df551631fae" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2017%20-%20Introduction%20to%20Loops%201ed39fb6da454718b5696df551631fae.html">Day 17 - Introduction to Loops</a></figure><figure id="06be5191-5237-4419-bb3d-6c7d938606f9" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2018%20-%20while%20Loop%2006be519152374419bb3d6c7d938606f9.html">Day 18 - while Loop</a></figure><figure id="a3fa466d-7ba6-4da5-8e1f-643c5e5e6fea" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2019%20-%20Break%20and%20Continuity%20a3fa466d7ba64da58e1f643c5e5e6fea.html">Day 19 - Break and Continuity</a></figure><figure id="59fdfc15-9a76-49ba-b0bd-c2061c744181" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2020%20-%20Python%20function%2059fdfc159a7649bab0bdc2061c744181.html">Day 20 - Python function</a></figure><figure id="07a6b8ad-add5-491c-b0ae-9832222ae972" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2021%20-%20Function%20Arguments%20and%20return%20statement%2007a6b8adadd5491cb0ae9832222ae972.html">Day 21 - Function Arguments and return statement</a></figure><figure id="bf7e93db-5b54-4c23-bee4-b794c0842e95" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2022%20-%20Lists%20bf7e93db5b544c23bee4b794c0842e95.html">Day 22 - Lists</a></figure><figure id="33de85e7-16e8-4089-b22a-f96a814280b7" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2023-%20List%20Methods%2033de85e716e84089b22af96a814280b7.html">Day 23- List Methods</a></figure><figure id="d9e83ffc-767d-4658-aa44-62f99953771e" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2024%20-%20Python%20Tuples%20d9e83ffc767d4658aa4462f99953771e.html">Day 24 - Python Tuples</a></figure><figure id="384ffe70-481d-456e-92b8-644fd761623f" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2025%20-%20Operation%20on%20Tuples%20384ffe70481d456e92b8644fd761623f.html">Day 25 - Operation on Tuples</a></figure><figure id="4665d9b9-707c-481f-a35e-5e439ffc0942" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2026%20-%20Exercise%204665d9b9707c481fa35e5e439ffc0942.html">Day 26 - Exercise</a></figure><figure id="81efe675-6aee-4842-9f04-62385510e67b" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2027%20-%20Quiz%20Project%2081efe6756aee48429f0462385510e67b.html">Day 27 - Quiz Project</a></figure><figure id="db38f3bf-8ad9-47fa-8c88-02a9359a9c55" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2028%20-%20f-strings%20in%20python%20db38f3bf8ad947fa8c8802a9359a9c55.html">Day 28 - f-strings in python</a></figure><figure id="7faf8b9c-50c2-428e-a1f8-8718cf9424df" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2030%20-%20Docstrings%20in%20python%20&amp;%20PEP%208%207faf8b9c50c2428ea1f88718cf9424df.html">Day 30 - Docstrings in python &amp; PEP 8</a></figure><figure id="3cd3d694-128b-4b40-aeaa-16e67398261c" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2030%20-%20Recursion%20in%20python%203cd3d694128b4b40aeaa16e67398261c.html">Day 30 - Recursion in python</a></figure><figure id="cf6c9200-3551-4542-b1b7-d5e98b0f3cda" class="link-to-page"><a href="Python%20Lecture%20Notes%2008f33baba3fb40b3b715a7c006be2fcb/Day%2031-%20Python%20Sets%20cf6c920035514542b1b7d5e98b0f3cda.html">Day 31- Python Sets</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

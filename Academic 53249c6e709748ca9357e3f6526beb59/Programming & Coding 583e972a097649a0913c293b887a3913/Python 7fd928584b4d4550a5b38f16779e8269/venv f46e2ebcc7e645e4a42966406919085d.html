@@ -1,0 +1,699 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>venv</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f46e2ebc-c7e6-45e4-a429-66406919085d" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/code_gray.svg"/></div><h1 class="page-title">venv</h1><p class="page-description"></p></header><div class="page-body"><p id="a5852970-8330-4aa3-902b-013455c8d810" class="">
+</p><p id="8bdaefcb-0b7c-4ff7-8223-cbce3e04af8f" class="">A virtual environment (<code>venv</code>) is used to create isolated Python environments for each of your projects. Here are the main reasons and benefits of using virtual environments:</p><h3 id="b6d3798c-d224-4aee-93b3-5688f56bf91e" class=""><strong>Why Use a Virtual Environment?</strong></h3><ol type="1" id="c93a24e3-df1f-4247-a758-19d5cbe7846a" class="numbered-list" start="1"><li><strong>Isolation of Dependencies:</strong><ul id="b52f597a-976e-4d99-9ac2-148c84e6fa4a" class="bulleted-list"><li style="list-style-type:disc">Each virtual environment has its own set of installed packages and dependencies. This isolation prevents conflicts between packages required by different projects. For example, you can use one version of a library in one project and a different version in another project without issues.</li></ul></li></ol><ol type="1" id="67164b65-debd-434d-b19f-b67e785da868" class="numbered-list" start="2"><li><strong>Preventing Version Conflicts:</strong><ul id="c3207dec-64a4-4d9d-a4e5-f682add32bd1" class="bulleted-list"><li style="list-style-type:disc">Projects may require different versions of the same package. By using virtual environments, you can ensure that each project uses the specific version it needs, avoiding version conflicts that could arise if you installed packages globally.</li></ul></li></ol><ol type="1" id="5058d1b7-4b52-4385-839f-933d9844324c" class="numbered-list" start="3"><li><strong>Cleaner Development Environment:</strong><ul id="bf199275-1c9d-4f75-aeed-fb28ad805f1b" class="bulleted-list"><li style="list-style-type:disc">Keeping your global Python environment clean ensures that only essential packages are installed globally. This makes it easier to manage your system and reduces the risk of accidentally altering the global environment.</li></ul></li></ol><ol type="1" id="3b1f3ee8-af6c-4499-b65a-27037652dbc6" class="numbered-list" start="4"><li><strong>Reproducibility:</strong><ul id="d135df06-f50e-4348-9edc-852150508a31" class="bulleted-list"><li style="list-style-type:disc">Virtual environments help in creating reproducible setups. By using a <code>requirements.txt</code> file, you can record the exact versions of packages used in your project and recreate the same environment on another system, ensuring consistency across different machines.</li></ul></li></ol><ol type="1" id="b76fba03-77df-4290-8bcc-07e4930ecbba" class="numbered-list" start="5"><li><strong>Easy Management:</strong><ul id="1e6da5fe-2eab-45b4-85b6-a70ecba4fd63" class="bulleted-list"><li style="list-style-type:disc">Virtual environments make it easier to manage project-specific dependencies. You can quickly create, update, or delete environments without affecting other projects or your global Python setup.</li></ul></li></ol><ol type="1" id="dc8a471f-a4a5-4260-89a2-774d69590553" class="numbered-list" start="6"><li><strong>Experimentation:</strong><ul id="b0bba8ae-29e6-4aad-92e2-d800f0858cf6" class="bulleted-list"><li style="list-style-type:disc">You can experiment with different packages or versions in a virtual environment without worrying about breaking your main Python setup. This is useful for testing new libraries or configurations.</li></ul></li></ol><h3 id="3ee38ec1-e9c1-4588-8f57-5fa852d9d47e" class=""><strong>Benefits of Using </strong><code><strong>venv</strong></code><strong>:</strong></h3><ol type="1" id="5f5da886-09c6-49c9-9e72-04ec9dab5fa2" class="numbered-list" start="1"><li><strong>Built-in Module:</strong><ul id="89a60e5d-0973-45d0-96a1-c072c30eaa0f" class="bulleted-list"><li style="list-style-type:disc"><code>venv</code> is included in the Python standard library starting from Python 3.3, so you don’t need to install any additional packages to use it.</li></ul></li></ol><ol type="1" id="38e40d88-4c4d-49f3-8949-ea5d0c1b3ae3" class="numbered-list" start="2"><li><strong>Lightweight:</strong><ul id="477b20d8-030c-4032-aea8-821ca71e4600" class="bulleted-list"><li style="list-style-type:disc"><code>venv</code> is lightweight and does not add significant overhead to your project. It creates a minimal environment with only the necessary files to isolate dependencies.</li></ul></li></ol><ol type="1" id="e78895b8-8f24-4dbd-8f36-bf7b2ab98a96" class="numbered-list" start="3"><li><strong>Easy to Use:</strong><ul id="c0245cd0-34ff-455c-9125-bb967a65aecc" class="bulleted-list"><li style="list-style-type:disc">Creating and managing virtual environments with <code>venv</code> is straightforward and requires only a few commands. It simplifies the process of setting up and maintaining project environments.</li></ul></li></ol><ol type="1" id="213cba90-3050-4113-9703-8432b352d56b" class="numbered-list" start="4"><li><strong>Cross-Platform Compatibility:</strong><ul id="b228e1ee-b176-4878-9314-6114061a2450" class="bulleted-list"><li style="list-style-type:disc"><code>venv</code> works on multiple platforms (Windows, macOS, Linux), making it a versatile choice for different operating systems.</li></ul></li></ol><ol type="1" id="f61fa00d-d6b9-49e7-9e60-7d8219768793" class="numbered-list" start="5"><li><strong>Integrated with IDEs:</strong><ul id="aa3c4808-e928-4fa4-86e3-383bceca07fe" class="bulleted-list"><li style="list-style-type:disc">Most modern Integrated Development Environments (IDEs) and code editors support <code>venv</code>, allowing you to easily switch between virtual environments and manage dependencies within the IDE.</li></ul></li></ol><p id="3c604732-4882-4075-ba40-9181a540e368" class="">By using virtual environments, you ensure that each project has a tailored environment that meets its specific requirements, reducing the risk of conflicts and making it easier to manage your development workflow.</p><p id="df1c152f-e228-4a27-9e8d-03759c50d889" class="">To create a virtual environment and install modules for your Python project, follow these steps:</p><h3 id="cd7593f0-f539-4cde-aacf-f96bc3eb2b3b" class="">1. <strong>Set Up Your Project Directory</strong></h3><p id="64eaf136-c22a-42e8-a23e-ee9238bec957" class="">Open your terminal or command prompt and navigate to the directory where you want to create your project.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fd507388-e0a6-4289-919d-f86bb95c2b2b" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">mkdir my_project
+cd my_project
+</code></pre><h3 id="609b18f9-8c83-44aa-946b-bb41017bb357" class="">2. <strong>Create a Virtual Environment</strong></h3><p id="5e8d4c42-9fa3-4b4e-85fa-64be6bf89ec7" class="">Use Python&#x27;s built-in <code>venv</code> module to create a virtual environment. Replace <code>venv_name</code> with your preferred name for the virtual environment.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a927e69d-6d91-4f87-ac30-2ec815b1b670" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">python3 -m venv venv_name
+</code></pre><p id="37d7d3da-2953-4dd7-84eb-ed87bda04779" class="">This will create a directory named <code>venv_name</code> containing the virtual environment.</p><h3 id="64ea6aab-8356-4c1b-8b4d-8ab64766ecc2" class="">3. <strong>Activate the Virtual Environment</strong></h3><ul id="bff65b22-936a-474d-9a98-991d18bc737e" class="bulleted-list"><li style="list-style-type:disc"><strong>On Windows:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3b53c803-abe9-47f4-a77f-be36122fd073" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">venv_name\\Scripts\\activate
+</code></pre></li></ul><ul id="df8e361e-2c3d-41b7-9ae4-e7b2437be8b3" class="bulleted-list"><li style="list-style-type:disc"><strong>On macOS/Linux:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5472c910-9545-4afd-8bf9-ac0a0027a02b" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">source venv_name/bin/activate
+</code></pre></li></ul><p id="35958501-c262-4789-b0e0-ef5d53e1a11f" class="">After activation, you should see the virtual environment&#x27;s name in your terminal prompt.</p><h3 id="eaede676-ced6-41d7-af55-6e0599b961bd" class="">4. <strong>Install Required Modules</strong></h3><p id="2663b5b4-1665-4cdf-afcd-c9544855bc62" class="">Use <code>pip</code> to install the modules you need. For example, to install <code>discord.py</code> and <code>sympy</code>, run:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f6254156-9f13-4ae4-837f-ab41a14c1617" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip install discord.py sympy
+</code></pre><p id="755400ae-25e7-4084-bd95-9f697b7fb6c2" class="">If you have a <code>requirements.txt</code> file with a list of modules, you can install all of them with:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f30d4527-8334-4cc6-83f5-78fd3ff20fe1" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip install -r requirements.txt
+</code></pre><h3 id="4e7f38a3-34d5-48e3-a1f8-75b2fd329920" class="">5. <strong>Verify the Installation</strong></h3><p id="e2b42b51-9be8-4483-b31c-3feeb3a5160a" class="">You can check that the modules are installed by running:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bf6812f0-4324-4a64-858f-4fd555cbdfc4" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip list
+</code></pre><p id="81afe26d-4fb4-4b8a-b27b-c3d8146db904" class="">This command will show a list of installed packages and their versions.</p><h3 id="9575fee2-0af4-46d9-a12b-b080bdd2db13" class="">6. <strong>Create and Run Your Python Script</strong></h3><p id="dfad524b-0a5c-46f3-9867-38d9963eda55" class="">Create your Python script (e.g., <code>bot.py</code>) and add your code. Run your script with:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cdfbe734-f4b4-4ac7-834e-7d70e20c7d8d" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">python bot.py
+</code></pre><h3 id="81636b63-3e67-43ac-bbc5-ce238e7dd405" class="">7. <strong>Deactivate the Virtual Environment</strong></h3><p id="b265cb24-d629-45b6-8c90-ae9a881ac4ce" class="">When you&#x27;re done working, deactivate the virtual environment with:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="70966747-811d-4bf5-ab84-a47a6462fc10" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">deactivate
+</code></pre><p id="ad6bf458-e2ae-4b32-916b-667adf27431b" class="">This will return you to the system’s default Python interpreter.</p><h3 id="3491b555-6fe1-422b-81e5-b247545db90b" class="">Additional Notes:</h3><ul id="e02504eb-22fb-4da1-942d-09a1b1af0c16" class="bulleted-list"><li style="list-style-type:disc"><strong>Managing Dependencies:</strong> Regularly update your <code>requirements.txt</code> by running <code>pip freeze &gt; requirements.txt</code> to ensure it includes all the packages you&#x27;ve installed.</li></ul><ul id="f0a06e4f-dcc8-4acb-9e0b-6eacd7f0976c" class="bulleted-list"><li style="list-style-type:disc"><strong>Handling Multiple Projects:</strong> Each project should have its own virtual environment to avoid conflicts between different project dependencies.</li></ul><p id="618d5b45-4436-4440-a41c-fc61583d326d" class="">Let me know if you need help with any specific steps or configurations!</p><p id="f3062c4d-9057-44b4-832c-64e4a9396013" class="">
+</p><h1 id="98317a40-0f84-4261-b145-8b172062bdc7" class="">requirements.txt</h1><p id="076ae68a-ed86-4470-a14d-02433960f5c6" class="">
+</p><p id="378cfe86-ad90-4419-a8fa-9fcd3f764a4f" class="">A <code>requirements.txt</code> file lists the packages your project depends on and their versions. When you run <code>pip install -r requirements.txt</code>, <code>pip</code> reads this file and installs the specified packages.</p><p id="275821b6-3c25-4d6d-8309-c429cf13b4e8" class="">Here’s how to write and use a <code>requirements.txt</code> file:</p><h3 id="0ed316fe-519b-41a2-aac5-19ee74e48ccb" class=""><strong>Creating a </strong><code><strong>requirements.txt</strong></code><strong> File</strong></h3><ol type="1" id="e56d3a04-3abc-4d55-8a9d-8e7b1db13d28" class="numbered-list" start="1"><li><strong>Manually Create a </strong><code><strong>requirements.txt</strong></code><strong> File:</strong><p id="d70e7790-0dfa-4141-a462-a7e312e1f880" class="">You can create a <code>requirements.txt</code> file manually using a text editor. Each line should contain the name of a package, optionally followed by a version specifier.</p><p id="f4618ec8-5cf4-4630-a0e3-9b90cbf391c0" class="">Example:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bd4c623f-3504-4a4f-ac46-efdc2d12e324" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">discord.py==2.0.1
+sympy&gt;=1.10.1
+requests&lt;3.0
+</code></pre><ul id="111b43fe-aaf8-4662-8c5d-035ec24993ca" class="bulleted-list"><li style="list-style-type:disc"><code>discord.py==2.0.1</code>: Specifies an exact version.</li></ul><ul id="8a8c35c4-3baf-4f88-a775-0179d57d8d9c" class="bulleted-list"><li style="list-style-type:disc"><code>sympy&gt;=1.10.1</code>: Specifies a minimum version.</li></ul><ul id="c55b1ad6-8f03-40a7-a6cd-448c29e59337" class="bulleted-list"><li style="list-style-type:disc"><code>requests&lt;3.0</code>: Specifies a maximum version.</li></ul></li></ol><ol type="1" id="fef77ed6-e679-4337-afb2-06f12c7ee486" class="numbered-list" start="2"><li><strong>Automatically Generate a </strong><code><strong>requirements.txt</strong></code><strong> File:</strong><p id="d650c56a-ef6b-46d6-b588-162e3a11ba5a" class="">If you have already installed the packages in your virtual environment, you can generate the <code>requirements.txt</code> file with <code>pip freeze</code>. This command lists all installed packages and their versions.</p><p id="d8e0c0bd-7a3f-4b72-b36d-511bd195cb08" class="">Run this command in the terminal:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e0d1e239-2501-4fe4-af82-5550bbcc7995" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip freeze &gt; requirements.txt
+</code></pre><p id="b93eea4d-027e-443e-81b3-9107585e5da5" class="">This will create a <code>requirements.txt</code> file with all the packages installed in your current environment.</p></li></ol><h3 id="934b3080-98ec-451f-878d-c179082bb58b" class=""><strong>Using the </strong><code><strong>requirements.txt</strong></code><strong> File</strong></h3><ol type="1" id="94a373e3-fd04-4437-bb47-8c01640bf0b4" class="numbered-list" start="1"><li><strong>Install Packages from </strong><code><strong>requirements.txt</strong></code><strong>:</strong><p id="df53db98-3bba-4b07-84a8-bf9827b197ed" class="">To install the packages listed in <code>requirements.txt</code>, use:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c62a7370-4496-4c37-82ff-498daf734113" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip install -r requirements.txt
+</code></pre><p id="2439bb37-7e72-46ff-833a-d37c58127f97" class="">This will read the file and install the specified packages into your current virtual environment.</p></li></ol><ol type="1" id="be6902c8-46ee-48a8-a7ad-f4d0c6ac1ad0" class="numbered-list" start="2"><li><strong>Update </strong><code><strong>requirements.txt</strong></code><strong>:</strong><p id="bd2fd249-bde7-4270-95c9-8efb24c040ee" class="">If you add or update packages in your virtual environment, regenerate the <code>requirements.txt</code> file to reflect these changes:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9ffe2457-277f-4afb-9945-172a5aa497ce" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">pip freeze &gt; requirements.txt
+</code></pre></li></ol><ol type="1" id="cedb2fd1-e1b6-4202-a455-d7d33d7c3ad8" class="numbered-list" start="3"><li><strong>Version Control:</strong><p id="607f9332-f3fc-42c6-a76f-9430d34cf5fb" class="">It’s a good practice to include the <code>requirements.txt</code> file in version control (e.g., Git) so that others working on the project can install the same dependencies.</p></li></ol><h3 id="128d377d-b900-4a47-97fb-01ba0b284cc1" class=""><strong>Common Specifications in </strong><code><strong>requirements.txt</strong></code></h3><ul id="d60e7fd4-d300-4556-ac00-dc2ac55076ce" class="bulleted-list"><li style="list-style-type:disc"><strong>Exact Version:</strong> <code>package==version</code></li></ul><ul id="0cd73697-95cc-4657-91d0-ce0ea1b41734" class="bulleted-list"><li style="list-style-type:disc"><strong>Minimum Version:</strong> <code>package&gt;=version</code></li></ul><ul id="d7e7121b-46b2-45c8-a119-6a192ece72a3" class="bulleted-list"><li style="list-style-type:disc"><strong>Maximum Version:</strong> <code>package&lt;=version</code></li></ul><ul id="f93d62d2-ee5e-4a26-94c8-eb3525fe10f6" class="bulleted-list"><li style="list-style-type:disc"><strong>Version Range:</strong> <code>package&gt;=min_version,&lt;max_version</code></li></ul><ul id="c48b4697-6581-43a4-85b6-581135ba7fcc" class="bulleted-list"><li style="list-style-type:disc"><strong>Git Repository:</strong> <code>git+https://github.com/user/repo.git</code><p id="16bcf129-4cbc-4bc4-838d-a4443c2e4743" class="">Example:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9972a6c6-249e-43b0-a853-61400dabb7e1" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">package==1.0.0
+package&gt;=2.0.0,&lt;3.0.0
+git+https://github.com/user/repo.git
+</code></pre></li></ul><p id="ad212716-2fc0-4422-a423-9cc044a83a07" class="">This setup ensures that anyone who clones your repository and installs the dependencies using <code>requirements.txt</code> will have the same environment as you.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
